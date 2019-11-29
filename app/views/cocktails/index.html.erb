@@ -1,0 +1,30 @@
+  <div class="banner" style="background-color: $transparent">
+    <div class="container">
+      <h1 class='d-flex justify-content-center margin-bottom-2'><strong>cocktail bar</strong></h1>
+      <h4 class='d-flex justify-content-center margin-bottom-2'>Berlin Wedding 10437</h4>
+      <a class="btn btn-flat d-flex justify-content-center margin-bottom-2" href="cocktails/new">Select or invent your drink</a>
+    </div>
+  </div>
+<div class="container mb-0">
+  <div class="row justify-content-center">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-3 card-category" style="background-image: url(<%= image_url(cocktail.photo) %>)">
+        <h3>
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        <%= link_to 'delete', cocktail_path(cocktail), method: :delete %>
+        </h3>
+      </div>
+
+    <% end %>
+    </div>
+  </div>
+  <br>
+  <div class='d-flex justify-content-center'>
+  <p>
+    <strong>
+      <%= link_to 'New cocktail', new_cocktail_path %>
+
+  </strong>
+</p>
+  </div>
+</div>

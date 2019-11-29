@@ -1,0 +1,37 @@
+<a class='btn btn-primary' href="/cocktails">Back</a>
+<div class='container d-flex justify-content-center'>
+  <div class="card-product">
+  <%= cl_image_tag @cocktail.photo, width: 400, height: 300, crop: :fill %>
+    <h1><strong><%= @cocktail.name %></strong></h1>
+    <table>
+        <tbody>
+          <tr>
+            </tr>
+            <th>Ingredients</th>
+            <th>Description</th>
+            <td><%= link_to 'New dose', new_cocktail_dose_path(@cocktail) %></td>
+          <tr>
+            <% if notice %>
+            <div class="alert alert-success"><%= notice %></div>
+            <% end %>
+            <% @cocktail.doses.each do |dose| %>
+            <div>
+              <th><%= dose.ingredient.name%></th>
+              <th><%= dose.description %></th>
+              <td><%= link_to 'delete', dose_path(dose, :cocktail_id => @cocktail ), method: :delete  %></td>
+            </div>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+  <div class='small-container'>
+
+    <div class='rating-container'>
+
+    </div>
+  </div>
+</div>
+
+
